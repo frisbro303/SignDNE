@@ -2,7 +2,7 @@
 A Python package for ariaDNE and its sign-oriented extension.
 
 In order to accommodate legacy users, we have updated the original MATLAB implementation of ariaDNE to include the new sign-oriented extension: 
-https://github.com/frisbro303/signDNE_MATLAB
+https://github.com/frisbro303/signDNE_MATLAB.
 
 ## Index
 1. [Package description](#Package-description)
