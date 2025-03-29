@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signDNE"
+version = "0.0.1"
+authors = [
+  { name="Felix Risbro Hjerrild", email="felix+signDNE@hjerrild.org" },]
+description = "SignDNE is a Python package for calculating ariaDNE and its sign-oriented extension"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "GPL-3.0-or-later"
+# dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'rtree', 'pyglet<2']
+
+
+[project.urls]
+Homepage = "https://github.com/frisbro303/signDNE_Python"
+
+
+[tool.setuptools.packages.find]
+where = ["signDNE"]
+
+
+[project.scripts]
+signDNE = "signDNE._signDNE_cli:main"
