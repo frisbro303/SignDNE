@@ -5,12 +5,12 @@ SignDNE is a Python package for calculating the shape complexity metric ariaDNE 
 Documentation for `SignDNE` is found in [docs.md](docs.md).
 
 ## Installation
-The recommended install method is with `pip`:
+The recommended installation method is with `pip`:
 ```bash
 pip install git+https://github.com/frisbro303/signDNE_python.git
 ```
 
-A guide on installing from source is detailed in the [installation section](docs.md) of the [documentation](docs.md).
+A guide to installing from source is detailed in the [installation section](docs.md) of the [documentation](docs.md).
 
 ## Examples
 
