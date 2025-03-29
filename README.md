@@ -10,7 +10,9 @@ The recommended install method is with `pip`:
 pip install git+https://github.com/frisbro303/signDNE_python.git
 ```
 
-### Examples
+A guide on installing from source is detailed in the [installation section](docs.md) of the [documentation](docs.md).
+
+## Examples
 
 1. Calculate signed ariaDNE for a single file and visualize:
    ```bash
