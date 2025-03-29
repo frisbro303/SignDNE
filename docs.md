@@ -10,7 +10,7 @@ The following preprocessing is automatically performed:
 - remove unreferenced vertices
 - remove infinite values from face and vertex data
   
-
+## Installation
 ## Command line interface
 Command line interface for the `ariaDNE` function.
 
