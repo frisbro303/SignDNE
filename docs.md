@@ -73,3 +73,13 @@ When the `-v` or `--visualize` flag is used with a single input file, the tool w
 - scipy
 - trimesh
 - numpy
+- pyvista
+- pandas
+- networkx
+- rtree
+- pyglet<2
+
+
+Note! To accommodate legacy users, we have updated the original MATLAB implementation of ariaDNE to include the new sign-oriented extension: 
+https://github.com/frisbro303/signDNE_MATLAB.
+
