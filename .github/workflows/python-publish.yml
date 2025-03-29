@@ -1,0 +1,59 @@
+name: Upload Python Package
+
+on:
+  release:
+    types: [published]  # Trigger when a GitHub release is created
+
+permissions:
+  contents: read  # Allows the action to access the repository contents
+  id-token: write  # Allows trusted publishing to PyPI
+
+jobs:
+  release-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4  # Checkout the code from your GitHub repository
+
+      - uses: actions/setup-python@v5  # Set up the Python environment
+        with:
+          python-version: "3.x"  # Adjust Python version if necessary
+
+      - name: Build release distributions
+        run: |
+          # Install the necessary build tools
+          python -m pip install --upgrade pip
+          python -m pip install build
+          
+          # Build the package using 'python -m build'
+          python -m build  # This will generate the distributions in the 'dist/' folder
+
+      - name: Upload distributions
+        uses: actions/upload-artifact@v4  # Upload the generated dist files as artifacts
+        with:
+          name: release-dists
+          path: dist/
+
+  pypi-publish:
+    runs-on: ubuntu-latest
+    needs: release-build  # This job depends on the 'release-build' job
+
+    permissions:
+      id-token: write  # Required for trusted publishing
+
+    environment:
+      name: pypi
+      # Optional: you can set the URL for the PyPI project version if your release tag is the version number
+      # url: https://pypi.org/project/signDNE_Python/${{ github.event.release.name }}
+
+    steps:
+      - name: Retrieve release distributions
+        uses: actions/download-artifact@v4  # Download the built dist files from the previous job
+        with:
+          name: release-dists
+          path: dist/
+
+      - name: Publish release distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1  # Action to upload the package to PyPI
+        with:
+          packages-dir: dist/  # Path to the dist directory containing the built packages
