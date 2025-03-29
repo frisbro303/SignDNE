@@ -20,7 +20,7 @@ dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'r
 
 [tool.setuptools]
 packages = ["signDNE"]
-package-dir = {"signDNE" = "signDNE"}
+package-dir = {"signDNE" = "signDNE/src"}
 
 
 [project.urls]
@@ -30,4 +30,4 @@ Homepage = "https://github.com/frisbro303/signDNE_Python"
 where = ["signDNE"]
 
 [project.scripts]
-signDNE = "signDNE._signDNE_cli:main"
+signDNE = "signDNE.src._signDNE_cli:main"
