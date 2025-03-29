@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "signDNE"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
   { name="Felix Risbro Hjerrild", email="felix+signDNE@hjerrild.org" },]
 description = "SignDNE is a Python package for calculating ariaDNE and its sign-oriented extension"
