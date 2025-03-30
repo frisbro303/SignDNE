@@ -1,6 +1,7 @@
 # SignDNE
-SignDNE is a Python package for calculating the shape complexity metric ariaDNE and its sign-oriented extension.
 ![Alt text](teeth-demo.png)
+SignDNE is a Python package for calculating the shape complexity metric ariaDNE and its sign-oriented extension.
+
 ## Documentation
 `SignDNE` can be used as a Python library and as a standalone command line interface.
 
