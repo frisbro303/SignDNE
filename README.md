@@ -1,4 +1,4 @@
-![Alt text](teeth-demo.png)
+![Alt text](https://github.com/frisbro303/SignDNE/blob/main/teeth-demo.png)
 # SignDNE
 SignDNE is a Python package for robustly calculating ariaDNE and its sign-oriented extension.
 
