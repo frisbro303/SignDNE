@@ -1,4 +1,4 @@
-![Alt text](https://github.com/frisbro303/SignDNE/blob/d894e6a0a7896ad9d70d066d079e623833015677/teeth-demo-transparent.png)
+![Alt text](https://github.com/frisbro303/SignDNE/blob/6c6efa3c08f0ed5e09477d40589657ea304cdd31/teeth-demo-transparent.png)
 # SignDNE
 SignDNE is a Python package designed for evolutionary biologists, providing an intuitive tool to robustly calculate the shape complexity metric ariaDNE and its sign-oriented extension.
 
