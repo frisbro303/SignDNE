@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "signDNE"
-version = "0.0.8"
+version = "0.0.5"
 authors = [
   { name="Felix Risbro Hjerrild", email="felix+signDNE@hjerrild.org" },
 ]
@@ -21,8 +21,11 @@ dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'r
 [tool.setuptools]
 package-dir = {"" = "signDNE"}
 
+[tool.setuptools.packages.find]
+where = ["signDNE"]
+
 [project.urls]
 Homepage = "https://github.com/frisbro303/signDNE_Python"
 
 [project.scripts]
-signDNE = "signDNE.src._signDNE_cli:main"
+signDNE = "signDNE._signDNE_cli:main"
