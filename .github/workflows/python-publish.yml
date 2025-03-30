@@ -15,6 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4  # Checkout the code from your GitHub repository
 
+      - name: Extract version from Git tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Update pyproject.toml version
+        run: |
+          sed -i "s/^version = .*/version = \"${VERSION}\"/" pyproject.toml
+          cat pyproject.toml | grep version  # Debugging step
+          
       - uses: actions/setup-python@v5  # Set up the Python environment
         with:
           python-version: "3.x"  # Adjust Python version if necessary
