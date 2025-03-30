@@ -19,6 +19,7 @@ https://github.com/frisbro303/signDNE_Python/blob/main/docs.md).
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 This software is licensed under the GPL-3.0 License. See the [LICENSE](https://github.com/frisbro303/SignDNE/blob/2347bf47a35affe612ac8d60e64805a3f1891951/LICENSE) file for details.
 
 ## Contributors 
