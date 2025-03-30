@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "signDNE"
-version = "0.0.5"
+version = "0.0.11"
 authors = [
   { name="Felix Risbro Hjerrild", email="felix+signDNE@hjerrild.org" },
 ]
@@ -28,4 +28,4 @@ where = ["signDNE"]
 Homepage = "https://github.com/frisbro303/signDNE_Python"
 
 [project.scripts]
-signDNE = "signDNE._signDNE_cli:main"
+signDNE = "src._signDNE_cli:main"

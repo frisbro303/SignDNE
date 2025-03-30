@@ -4,7 +4,7 @@ import pandas as pd
 import trimesh
 from pathlib import Path
 import sys
-from signDNE import aria_dne
+from src.signDNE import aria_dne
 
 
 def visualize_mesh(mesh, local_dne):
