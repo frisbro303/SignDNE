@@ -10,7 +10,7 @@ tags:
   - Shape complexity metric
   - Morphology
 authors:
-  - name: Felix Risbro Hjerrild
+  - name: Felix R. Hjerrild
     orcid: 0009-0007-3158-0553
     affiliation: 1
   - name: Shan Shan
