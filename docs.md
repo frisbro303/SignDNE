@@ -1,3 +1,32 @@
+# SignDNE
+SignDNE is a Python package designed for evolutionary biologists, providing an intuitive tool to robustly calculate the shape complexity metric ariaDNE and its sign-oriented extension.
+
+## Installation
+# With `pip` (recommended)
+
+The recommended installation method is with `pip`:
+```bash
+pip install signDNE
+```
+`SignDNE` should now be available in the terminal.
+
+# From source
+To install the latest development version of `SignDNE` follow the steps:
+
+1) Clone the repository:
+```bash
+git clone git@github.com:frisbro303/SignDNE.git
+```
+2) Enter the repository folder
+```bash
+cd SignDNE
+```
+3) To install and build with `pip` run:
+```bash
+pip install .
+```
+`SignDNE` should now be available in the terminal.
+
 ## signDNE library
 In order to acess the ariaDNE function add `from signDNE import aria_dne` to your script.
 
@@ -9,8 +38,9 @@ The following preprocessing is automatically performed:
 - remove duplicate faces
 - remove unreferenced vertices
 - remove infinite values from face and vertex data
-  
-## Installation
+
+
+
 ## Command line interface
 Command line interface for the `ariaDNE` function.
 
