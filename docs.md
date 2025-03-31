@@ -8,14 +8,14 @@ The recommended installation method is with `pip`:
 ```bash
 pip install signDNE
 ```
-`SignDNE` should now be available in the terminal.
+`SignDNE` should now be available in your terminal.
 
-### From source
+### Latest development version from source
 To install the latest development version of `SignDNE` follow the steps:
 
 1) Clone the repository:
 ```bash
-git clone git@github.com:frisbro303/SignDNE.git
+git clone https://github.com/frisbro303/SignDNE.git
 ```
 2) Enter the repository folder
 ```bash
@@ -25,7 +25,6 @@ cd SignDNE
 ```bash
 pip install .
 ```
-`SignDNE` should now be available in the terminal.
 
 ## signDNE library
 In order to acess the ariaDNE function add `from signDNE import aria_dne` to your script.
