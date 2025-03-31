@@ -1,5 +1,5 @@
 ---
-title: 'SignDNE: A Python package for galactic dynamics'
+title: 'SignDNE: A Python package for calculating ariaDNE and its sign-oriented extensions'
 tags:
   - Python
   - Morphometrics
