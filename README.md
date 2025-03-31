@@ -14,7 +14,7 @@ The recommended installation method is with `pip`:
 ```bash
 pip install signDNE
 ```
-Alternatively, `SignDNE` can be installed from source which is detailed in the [installation section](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#installation) of the [documentation](
+Alternatively, the latest development version of `SignDNE` can be installed from source, which is detailed in the [installation section](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#installation) of the [documentation](
 https://github.com/frisbro303/signDNE_Python/blob/main/docs.md).
 
 ## License
