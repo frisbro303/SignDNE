@@ -62,6 +62,7 @@ The core functionality is encapsulated in the function `ariaDNE`. The function t
 - Optional distance cutoff for the local neighborhoods used to calculate DNE. Default is $0$.
 - Optional desired distance metric, either Euclidean or Geodesic. Default is Euclidean.
 - Optional pre-computed distances. The format of which should be a symmetric $n times n$  matrix with pairwise distances, where $n$ is the number of points.
+
 With the following outputs:
 - *local_curvature*,  which is an ordered list of the signed local bending estimates for each vertex.
 - *local_dne*, which is local_curvature weighted by the vertex area. The vertex area is defined as the average area of the adjacent triangular faces. 
