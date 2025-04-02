@@ -1,10 +1,8 @@
 from scipy.spatial.distance import pdist, squareform
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import dijkstra
-import trimesh
 import numpy as np
-import pyvista as pv
-from utility import compute_f2v, triangulation_to_adjacency_matrix, close_holes
+from utility import compute_face2vertex, triangulation_to_adjacency_matrix, close_holes
 
 
 def prep(mesh):
@@ -143,7 +141,7 @@ def aria_dne(
     prep(mesh)
     centralize(mesh)
 
-    f2v = compute_f2v(mesh)
+    face2vertex = compute_face2vertex(mesh)
 
     unnormalized_vertex_area = compute_vertex_area(mesh, f2v)
     rescale(mesh)
