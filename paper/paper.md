@@ -38,7 +38,7 @@ Biological shapes and anatomical structures are fundamental to the study of evol
 
 ![Visualization of local curvature field on various biological specimens identified by their MorphoSource media identifiers. Positive curvature regions are shaded red, and negative curvature regions are shaded blue. \label{visualization-demo}](visualization-demo.png)
 
-`signDNE` is a new Python package for calculating DNE and sign-oriented DNE. The package faithfully reproduces the robust `ariaDNE` algorithm for calculating DNE, and includes a novel algorithm for robustly determining DNE signs. The implementation improves accessibility and usability by providing a visualization tool, aiding evolutionary biologists in their research, along with batch processing features. \ref{visualization-demo} illustrates the visualization functionality of the local DNE field on various biological specimens.
+`signDNE` is a new Python package for calculating DNE and sign-oriented DNE. The package faithfully reproduces the robust `ariaDNE` algorithm for calculating DNE, and includes a novel algorithm for robustly determining DNE signs. The implementation improves accessibility and usability by providing a visualization tool, aiding evolutionary biologists in their research, along with batch processing features. Figure \ref{visualization-demo} illustrates the visualization functionality of the local DNE field on various biological specimens.
 Alongside the new Python implementation, the original MATLAB implementation of `ariaDNE` has been updated to include the sign-oriented extension.
 
 # Statement of need
