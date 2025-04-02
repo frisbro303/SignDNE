@@ -3,6 +3,9 @@ SignDNE is a Python package designed for evolutionary biologists, providing an i
 
 See the [arXiv preprint paper](https://arxiv.org/abs/2409.05549) for an exposition and discussion, of our novel robust algorithm for calculating the sign-oriented extension.
 
+Note! To accommodate legacy users, we have updated the original MATLAB implementation of ariaDNE to include the new sign-oriented extension: 
+https://github.com/frisbro303/signDNE_MATLAB.
+
 ## Installation
 ### With `pip` (recommended)
 
@@ -111,6 +114,5 @@ When the `-v` or `--visualize` flag is used with a single input file, the tool w
 - pyglet<2
 
 
-Note! To accommodate legacy users, we have updated the original MATLAB implementation of ariaDNE to include the new sign-oriented extension: 
-https://github.com/frisbro303/signDNE_MATLAB.
+
 
