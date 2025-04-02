@@ -4,48 +4,112 @@ from scipy.sparse.csgraph import dijkstra
 import trimesh
 import numpy as np
 import pyvista as pv
+from utility import compute_f2v, triangulation_to_adjacency_matrix, close_holes
 
 
-def compute_f2v(mesh):
-    F = mesh.faces.T
-    V = mesh.vertices.T
-    nf = F.shape[1]
-    nv = V.shape[1]
-    I = np.hstack((F[0], F[1], F[2]))
-    J = np.hstack((np.arange(nf), np.arange(nf), np.arange(nf)))
-    S = np.ones(len(I))
-    F2V = csr_matrix((S, (J, I)), shape=(nf, nv))
-    return F2V
+def prep(mesh):
+    """
+    Prepare mesh by simple preprocesing
+    """
+    mesh.fill_holes()
+    mesh.update_faces(mesh.nondegenerate_faces(height=1e-08))
+    mesh.update_faces(mesh.unique_faces())
+    mesh.remove_infinite_values()
+    mesh.remove_unreferenced_vertices()
+
+
+def compute_vertex_area(mesh, f2v):
+    face_area = mesh.area_faces
+    vertex_area= (face_area.T @ f2v) / 3
+    return vertex_area
+
+
+def make_watertight(mesh):
+    if mesh.is_watertight:
+        watertight_mesh = mesh
+    else:
+        watertight_mesh = close_holes(mesh)
+    return watertight_mesh
 
 
 def centralize(mesh):
     center = np.sum(mesh.vertices, 0) / mesh.vertices.shape[0]
     mesh.vertices -= center
+
+
+def rescale(mesh):
     scale_factor = np.sqrt(1 / mesh.area)
     mesh.vertices *= scale_factor
+        
+
+def compute_vertex_normals(mesh):
+    """
+    Calculate non-weighted vertex normals 
+    """
+    face_normals = mesh.face_normals
+    vertex_normals = np.zeros(mesh.vertices.shape)
+
+    for i, face in enumerate(mesh.faces):
+        for vertex in face:
+            vertex_normals[vertex] += face_normals[i]
+    vertex_normals = trimesh.util.unitize(vertex_normals)
+
+    return vertex_normals
+
+def get_dists(precomputed_dist, points, faces, num_points):
+    if precomputed_dist is not None:
+        if isinstance(precomputed_dist, np.ndarray) and precomputed_dist.shape == (num_points, num_points):
+            d_dist = precomputed_dist
+        else:
+            raise TypeError(
+                "Variable precomputed_dist must be a square numpy array "
+                "with size equal to the number of points"
+            )
+    elif distance_type == 'Geodesic':
+        d_dist = dijkstra(triangulation_to_adjacency_matrix(points, faces, num_points), directed=False)
+    elif distance_type == 'Euclidean':
+        d_dist = squareform(pdist(points))
+    else:
+        raise NameError(
+            "Provide valid precomputed_dist or set distance_type to either "
+            "'Geodesic' or 'Euclidean'"
+        )
+    return d_dist
 
 
-def triangulation_to_adjacency_matrix(vertices, faces, num_points):
-    A = np.zeros((num_points, num_points))
-    for face in faces:
-        for i in range(3):
-            j = (i + 1) % 3
-            v1 = face[i]
-            v2 = face[j]
-            dist = np.linalg.norm(vertices[v1] - vertices[v2])
-            A[v1, v2] = dist
-            A[v2, v1] = dist
-    return A
+def build_covariance_matrix(p, w):
+    cov = np.zeros((6,))
+    cov[0] = np.sum(p[:, 0] * w.T * p[:, 0], axis=0)
+    cov[1] = np.sum(p[:, 0] * w.T * p[:, 1], axis=0)
+    cov[2] = np.sum(p[:, 0] * w.T * p[:, 2], axis=0)
+    cov[3] = np.sum(p[:, 1] * w.T * p[:, 1], axis=0)
+    cov[4] = np.sum(p[:, 1] * w.T * p[:, 2], axis=0)
+    cov[5] = np.sum(p[:, 2] * w.T * p[:, 2], axis=0)
+    cov /= np.sum(w)
+
+    cov_mat = np.array([
+        [cov[0], cov[1], cov[2]],
+        [cov[1], cov[3], cov[4]],
+        [cov[2], cov[4], cov[5]]
+    ])
+    return cov_mat
 
 
-def close_holes(tm_mesh):
-    pv_mesh = pv.wrap(tm_mesh)
-    filled_mesh = pv_mesh.fill_holes(hole_size=float('inf'))
-    vertices = filled_mesh.points
-    faces = filled_mesh.faces.reshape((-1, 4))[:, 1:]
-    tm_closed_mesh = trimesh.Trimesh(vertices=vertices, faces=faces)
-    tm_closed_mesh.fix_normals()
-    return tm_closed_mesh
+def determine_curvature_orientation(points, neighbour, weight, watertight_mesh):
+    # Calculate weighted neighborhood centroid
+    neighbour_centroid = np.sum(points[neighbour, :] * weight.T[:, np.newaxis], axis=0) / np.sum(weight)
+
+    # Determine if the centroid is inside or not to find the sign of curvature
+    inside = watertight_mesh.ray.contains_points([neighbour_centroid])
+    sign = int(inside) * 2 - 1
+    return sign
+
+def choose_arg_eig(v, jj):
+    v_aug = np.hstack([v, -v])
+    diff = v_aug - np.tile(vertex_normals[jj, :], (6, 1)).T
+    q = np.sum(diff ** 2, axis=0)
+    k = np.argmin(q)
+    return k
 
 
 def aria_dne(
@@ -74,35 +138,18 @@ def aria_dne(
     if not isinstance(mesh, trimesh.base.Trimesh):
         raise TypeError("mesh must be an instance of trimesh.base.Trimesh")
 
-    # Simple clean up
-    mesh.fill_holes()
-    mesh.update_faces(mesh.nondegenerate_faces(height=1e-08))
-    mesh.update_faces(mesh.unique_faces())
-    mesh.remove_infinite_values()
-    mesh.remove_unreferenced_vertices()
-
-    unnormalized_face_area = mesh.area_faces
-    f2v = compute_f2v(mesh)
-    unnormalized_vertex_area = (unnormalized_face_area.T @ f2v) / 3
-
+    prep(mesh)
     centralize(mesh)
 
-    if mesh.is_watertight:
-        watertight_mesh = mesh
-    else:
-        watertight_mesh = close_holes(mesh)
+    f2v = compute_f2v(mesh)
 
-    face_area = mesh.area_faces
-    vertex_area = (face_area.T @ f2v) / 3
+    unnormalized_vertex_area = compute_vertex_area(mesh, f2v)
+    rescale(mesh)
+    vertex_area = compute_vertex_area(mesh, f2v)
 
-    # Calculate non-weighted vertex normals
-    face_normals = mesh.face_normals
-    vertex_normals = np.zeros(mesh.vertices.shape)
+    watertight_mesh = make_watertight(mesh)
 
-    for i, face in enumerate(mesh.faces):
-        for vertex in face:
-            vertex_normals[vertex] += face_normals[i]
-    vertex_normals = trimesh.util.unitize(vertex_normals)
+    vertex_normals = compute_vertex_normals(mesh)
 
     points = mesh.vertices
     faces = mesh.faces
@@ -110,24 +157,7 @@ def aria_dne(
     normals = np.zeros((num_points, 3))
     local_curvature = np.zeros(num_points)
 
-    if precomputed_dist is not None:
-        if isinstance(precomputed_dist, np.ndarray) and precomputed_dist.shape == (num_points, num_points):
-            d_dist = precomputed_dist
-        else:
-            raise TypeError(
-                "Variable precomputed_dist must be a square numpy array "
-                "with size equal to the number of points"
-            )
-    elif distance_type == 'Geodesic':
-        d_dist = dijkstra(triangulation_to_adjacency_matrix(points, faces, num_points), directed=False)
-    elif distance_type == 'Euclidean':
-        d_dist = squareform(pdist(points))
-    else:
-        raise NameError(
-            "Provide valid precomputed_dist or set distance_type to either "
-            "'Geodesic' or 'Euclidean'"
-        )
-
+    d_dist = get_dists(precomputed_dist, points, faces, num_points)
     K = np.exp(-d_dist ** 2 / bandwidth ** 2)
 
     # Estimate curvature via PCA for each vertex in the mesh
@@ -137,47 +167,23 @@ def aria_dne(
         if num_neighbours <= 3:
             print(f'aria_dne: Too few neighbors on vertex {jj}.')
         p = np.tile(points[jj, :3], (num_neighbours, 1)) - points[neighbour, :3]
-        w = K[jj, neighbour]
+        weights = K[jj, neighbour]
 
-        # Build weighted covariance matrix for PCA
-        C = np.zeros((6,))
-        C[0] = np.sum(p[:, 0] * w.T * p[:, 0], axis=0)
-        C[1] = np.sum(p[:, 0] * w.T * p[:, 1], axis=0)
-        C[2] = np.sum(p[:, 0] * w.T * p[:, 2], axis=0)
-        C[3] = np.sum(p[:, 1] * w.T * p[:, 1], axis=0)
-        C[4] = np.sum(p[:, 1] * w.T * p[:, 2], axis=0)
-        C[5] = np.sum(p[:, 2] * w.T * p[:, 2], axis=0)
-        C /= np.sum(w)
-
-        Cmat = np.array([
-            [C[0], C[1], C[2]],
-            [C[1], C[3], C[4]],
-            [C[2], C[4], C[5]]
-        ])
+        cov_mat = build_covariance_matrix(p, w)
 
         # Compute eigenvalues and eigenvectors
-        d, v = np.linalg.eig(Cmat)
+        eigvals, eigvecs = np.linalg.eig(cov_mat)
 
-        # Find the eigenvector closest to the vertex normal
-        v_aug = np.hstack([v, -v])
-        diff = v_aug - np.tile(vertex_normals[jj, :], (6, 1)).T
-        q = np.sum(diff ** 2, axis=0)
-        k = np.argmin(q)
+        chosen_eigvec = choose_arg_eigvec(eigvecs, jj)
+        # Update the vertex normal using chosen eigenvector
+        normals[jj, :] = v_aug[:, chosen_eigvec]
+        chosen_eigvec %= 3
 
-        # Update the vertex normal using the eigenvector
-        normals[jj, :] = v_aug[:, k]
-        k %= 3
-
-        # Calculate weighted neighborhood centroid
-        neighbour_centroid = np.sum(points[neighbour, :] * w.T[:, np.newaxis], axis=0) / np.sum(w)
-
-        # Determine if the centroid is inside or not to find the sign of curvature
-        inside = watertight_mesh.ray.contains_points([neighbour_centroid])
-        sign = int(inside) * 2 - 1
+        orientation_sign = determine_curvature_orientation(points, neighbour, weights, watertight_mesh)
 
         # Estimate curvature using the eigenvalue
-        lambda_ = d[k]
-        local_curvature[jj] = (lambda_ / np.sum(d)) * sign
+        lambda_ = eigvals[chosen_eigvec]
+        local_curvature[jj] = (lambda_ / np.sum(eigvals)) * orientation_sign
 
     # Save the outputs
     local_dne = np.multiply(local_curvature, vertex_area)
