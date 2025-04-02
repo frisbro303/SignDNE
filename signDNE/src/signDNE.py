@@ -56,6 +56,7 @@ def compute_vertex_normals(mesh):
 
     return vertex_normals
 
+
 def get_dists(precomputed_dist, points, faces, num_points):
     if precomputed_dist is not None:
         if isinstance(precomputed_dist, np.ndarray) and precomputed_dist.shape == (num_points, num_points):
@@ -104,6 +105,7 @@ def determine_curvature_orientation(points, neighbour, weight, watertight_mesh):
     sign = int(inside) * 2 - 1
     return sign
 
+
 def choose_arg_eig(v, jj):
     v_aug = np.hstack([v, -v])
     diff = v_aug - np.tile(vertex_normals[jj, :], (6, 1)).T
@@ -151,23 +153,21 @@ def aria_dne(
 
     vertex_normals = compute_vertex_normals(mesh)
 
-    points = mesh.vertices
-    faces = mesh.faces
     num_points = np.shape(points)[0]
     normals = np.zeros((num_points, 3))
     local_curvature = np.zeros(num_points)
 
-    d_dist = get_dists(precomputed_dist, points, faces, num_points)
-    K = np.exp(-d_dist ** 2 / bandwidth ** 2)
+    d_dist = get_dists(precomputed_dist, mesh.vertices, mesh.faces, num_points)
+    kernel = np.exp(-d_dist ** 2 / bandwidth ** 2)
 
     # Estimate curvature via PCA for each vertex in the mesh
     for jj in range(num_points):
-        neighbour = np.where(K[jj, :] > cutoff)[0]
+        neighbour = np.where(kernel[jj, :] > cutoff)[0]
         num_neighbours = len(neighbour)
         if num_neighbours <= 3:
             print(f'aria_dne: Too few neighbors on vertex {jj}.')
-        p = np.tile(points[jj, :3], (num_neighbours, 1)) - points[neighbour, :3]
-        weights = K[jj, neighbour]
+        p = np.tile(mesh.vertices[jj, :3], (num_neighbours, 1)) - mesh.vertices[neighbour, :3]
+        weights = kernel[jj, neighbour]
 
         cov_mat = build_covariance_matrix(p, w)
 
@@ -179,7 +179,7 @@ def aria_dne(
         normals[jj, :] = v_aug[:, chosen_eigvec]
         chosen_eigvec %= 3
 
-        orientation_sign = determine_curvature_orientation(points, neighbour, weights, watertight_mesh)
+        orientation_sign = determine_curvature_orientation(mesh.vertices, neighbour, weights, watertight_mesh)
 
         # Estimate curvature using the eigenvalue
         lambda_ = eigvals[chosen_eigvec]
