@@ -10,7 +10,7 @@ Documentation for `SignDNE` is found in [docs.md](https://github.com/frisbro303/
 ## Installation
 ![PyPI](https://img.shields.io/pypi/v/signDNE)
 
-The recommended installation method is with `pip`:
+The recommended installation method is to install the latest tagged release with `pip`:
 ```bash
 pip install signDNE
 ```
