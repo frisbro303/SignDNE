@@ -38,14 +38,14 @@ Biological shapes and anatomical structures are fundamental to the study of evol
 
 <table>
   <tr>
-    <td><img src="figures/image1.png" width="200"/></td>
-    <td><img src="figures/image2.png" width="200"/></td>
-    <td><img src="figures/image3.png" width="200"/></td>
+    <td><img src="figures/000122274.png" width="200"/></td>
+    <td><img src="figures/000576115.png" width="200"/></td>
+    <td><img src="figures/000120565.png" width="200"/></td>
   </tr>
   <tr>
-    <td><img src="figures/image4.png" width="200"/></td>
-    <td><img src="figures/image5.png" width="200"/></td>
-    <td><img src="figures/image6.png" width="200"/></td>
+    <td><img src="figures/000121104.png" width="200"/></td>
+    <td><img src="figures/000119433.png" width="200"/></td>
+    <td><img src="figures/000458120.png" width="200"/></td>
   </tr>
 </table>
 
