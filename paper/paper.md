@@ -102,7 +102,7 @@ Calculate DNE or signDNE for all files in a folder with a custom bandwidth:
 $ signDNE path/to/mesh/directory -b 0.1
 ```
 
-The package can be installed via pip directly from the project repository.  Full documentation is available at the [repository](https://github.com/frisbro303/signDNE_Python).
+Full documentation is available at the [repository](https://github.com/frisbro303/signDNE_Python).
 
 # Acknowledgement
 DB is supported by NSF BCS 1552848 and NSF DBI 1759839. ID acknowledges the support of the Math+X grant 400837 from the Simons Foundation. 
