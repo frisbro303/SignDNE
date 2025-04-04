@@ -7,28 +7,15 @@ Note! To accommodate legacy users, we have updated the original MATLAB implement
 https://github.com/frisbro303/signDNE_MATLAB.
 
 ## Installation
-### With `pip` (recommended)
+![PyPI](https://img.shields.io/pypi/v/signDNE)
 
-The recommended installation method is with `pip`:
+The recommended installation method is to install the latest tagged release with `pip`:
 ```bash
 pip install signDNE
 ```
-`SignDNE` should now be available in your terminal.
-
-### Latest development version from source
-To install the latest development version of `SignDNE` follow the steps:
-
-1) Clone the repository:
+Alternatively, you can install the latest development version of `SignDNE` by running:
 ```bash
-git clone https://github.com/frisbro303/SignDNE.git
-```
-2) Enter the repository folder
-```bash
-cd SignDNE
-```
-3) Install and build with `pip`:
-```bash
-pip install .
+pip install git+https://github.com/frisbro303/SignDNE
 ```
 
 ## signDNE library
