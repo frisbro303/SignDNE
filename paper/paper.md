@@ -36,24 +36,6 @@ bibliography: paper.bib
 # Summary
 Biological shapes and anatomical structures are fundamental to the study of evolutionary biology. Numerical descriptors that quantify the overall geometry of biological forms are essential tools for the modeling, analysis, and understanding of evolutionary processes. The Dirichlet Normal Energy (DNE) is a shape complexity metric that addresses this by summarizing the local curvature of surfaces, particularly aiding analytical studies and providing insights into evolutionary and functional adaptations. The sign-oriented DNE is a natural extension of DNE, that distinguishes between the convex and concave regions of a surface by assigning signs to each point. Specifically, it assigns a positive sign when the surface bends outward -- like a cusp or a ridge, and a negative sign when the surface bends inward -- like a valley.
 
-
-![Caption for image 1](figures/000122274.png){ width=33% }
-![Caption for image 2](figures/000576115.png){ width=33% }
-![Caption for image 3](figures/000120565.png){ width=33% }
-
-<table>
-  <tr>
-    <td><img src="figures/000122274.png" width="200"/></td>
-    <td><img src="figures/000576115.png" width="200"/></td>
-    <td><img src="figures/000120565.png" width="200"/></td>
-  </tr>
-  <tr>
-    <td><img src="figures/000121104.png" width="200"/></td>
-    <td><img src="figures/000119433.png" width="200"/></td>
-    <td><img src="figures/000458120.png" width="200"/></td>
-  </tr>
-</table>
-
 ![Visualization of local curvature field on various biological specimens identified by their [MorphoSource](https://www.morphosource.org) media identifiers. Positive curvature regions are shaded red, and negative curvature regions are shaded blue. \label{visualization-demo}](visualization-demo.png)
 
 `signDNE` is a new Python package for calculating DNE and sign-oriented DNE. The package faithfully reproduces the robust `ariaDNE` algorithm for calculating DNE, and includes a novel algorithm for robustly determining DNE signs. The implementation improves accessibility and usability by providing a visualization tool, aiding evolutionary biologists in their research, along with batch processing features. Figure \ref{visualization-demo} illustrates the visualization functionality of the local DNE field on various biological specimens.
