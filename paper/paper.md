@@ -42,8 +42,8 @@ Biological shapes and anatomical structures are fundamental to the study of evol
 Alongside the new Python implementation, the original MATLAB implementation of `ariaDNE` has been updated to include the sign-oriented extension.
 
 # Statement of need
-DNE was originally proposed as a dental topographic metric and has shown considerable potential in terms of inferring dietary relationships [@winchester2014dental][@berthaume2016food][@lopez2018dental][@de2021widespread][@selig2021mammalian][@selig2024variation]. 
-More recently, it has been applied to other anatomical structures, aiding in the analysis of functional and evolutionary relationships, reconstructing evolutionary pathways, and identifying adaptive traits [@stamos2020ontogeny @thomas2020physical @chiaradia2023tissue @clear2023baculum @pamfilie2023quantifying @assemat2023shape]. 
+DNE was originally proposed as a dental topographic metric and has shown considerable potential in terms of inferring dietary relationships [@winchester2014dental; @berthaume2016food; @lopez2018dental; @de2021widespread; @selig2021mammalian; @selig2024variation]. 
+More recently, it has been applied to other anatomical structures, aiding in the analysis of functional and evolutionary relationships, reconstructing evolutionary pathways, and identifying adaptive traits [@stamos2020ontogeny; @thomas2020physical; @chiaradia2023tissue; @clear2023baculum; @pamfilie2023quantifying; @assemat2023shape]. 
 The original DNE implementation @winchester2014dental @pampush2016introducing is sensitive to variations in the discrete representation of continuous surfaces such as perturbations of mesh resolution, number of triangle faces, surface smoothing and noise.
 This led to the development of the MATLAB-based ariaDNE @shan2019ariadne, which aimed to provide a more reliable computation of DNE.
 
