@@ -57,20 +57,32 @@ Previous implementations of DNE and sign-oriented DNE have been written in R and
 The `signDNE` Python package combines the original `ariaDNE`, with the new sign-oriented extension. Users can use the package both as a standard Python library and as a standalone command-line interface (CLI). 
 
 The core functionality is encapsulated in the function `ariaDNE`. The function takes the following inputs:
+
 - Mesh in the format of the Trimesh library. If the mesh is not watertight, a watertight version of the mesh is generated on the fly to use for ray casting.
+  
 - Optional bandwidth, for specifying local influence in DNE calculation. Default is set to be $0.08$.
+
 - Optional distance cutoff for the local neighborhoods used to calculate DNE. Default is $0$.
+
 - Optional desired distance metric, either Euclidean or Geodesic. Default is Euclidean.
+
 - Optional pre-computed distances. The format of which should be a symmetric $n times n$  matrix with pairwise distances, where $n$ is the number of points.
 
 With the following outputs:
 - *local_curvature*,  which is an ordered list of the signed local bending estimates for each vertex.
-- *local_dne*, which is local_curvature weighted by the vertex area. The vertex area is defined as the average area of the adjacent triangular faces. 
+
+- *local_dne*, which is local_curvature weighted by the vertex area. The vertex area is defined as the average area of the adjacent triangular faces.
+
 - *dne*, which is the original DNE value. This is also the sum of *local_dne*.
+
 - *positive_dne*, which is the positive component of DNE.
+
 - *negative_dne*, which is the negative component of DNE.
+
 - *surface_area*, which is the total surface area of the input mesh.
+
 - *positive_surface_area*, which is the surface area of the positive DNE regions.
+
 - *negative_surface_area*, which is the surface area of the negative DNE regions.
 
 The CLI offers a convenient interface for directly processing files using this function, streamlining workflows and enhancing usability for different applications. Easy assessment of parameter choice is crucial for practicing biologists to efficiently use shape complexity metrics. This is addressed by providing a visualization tool that allows for quick assessment of parameter choice. The CLI features batch processing, namely, recursive folder processing and multiple file processing. By default, results are written to `STDOUT`, but can optionally be exported as a CSV file.
