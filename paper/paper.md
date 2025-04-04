@@ -36,6 +36,11 @@ bibliography: paper.bib
 # Summary
 Biological shapes and anatomical structures are fundamental to the study of evolutionary biology. Numerical descriptors that quantify the overall geometry of biological forms are essential tools for the modeling, analysis, and understanding of evolutionary processes. The Dirichlet Normal Energy (DNE) is a shape complexity metric that addresses this by summarizing the local curvature of surfaces, particularly aiding analytical studies and providing insights into evolutionary and functional adaptations. The sign-oriented DNE is a natural extension of DNE, that distinguishes between the convex and concave regions of a surface by assigning signs to each point. Specifically, it assigns a positive sign when the surface bends outward -- like a cusp or a ridge, and a negative sign when the surface bends inward -- like a valley.
 
+
+![Caption for image 1](figures/000122274.png){ width=33% }
+![Caption for image 2](figures/000576115.png){ width=33% }
+![Caption for image 3](figures/000120565.png){ width=33% }
+
 <table>
   <tr>
     <td><img src="figures/000122274.png" width="200"/></td>
