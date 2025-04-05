@@ -42,10 +42,10 @@ Biological shapes and anatomical structures are fundamental to the study of evol
 Alongside the new Python implementation, the original MATLAB implementation of `ariaDNE` has been updated to include the sign-oriented extension.
 
 # Statement of need
-DNE was originally proposed as a dental topographic metric and has shown considerable potential in terms of inferring dietary relationships [@winchester2014dental][@berthaume2016food][@lopez2018dental][@de2021widespread][@selig2021mammalian][@selig2024variation]. 
-More recently, it has been applied to other anatomical structures, aiding in the analysis of functional and evolutionary relationships, reconstructing evolutionary pathways, and identifying adaptive traits [@stamos2020ontogeny @thomas2020physical @chiaradia2023tissue @clear2023baculum @pamfilie2023quantifying @assemat2023shape]. 
-The original DNE implementation @winchester2014dental @pampush2016introducing is sensitive to variations in the discrete representation of continuous surfaces such as perturbations of mesh resolution, number of triangle faces, surface smoothing and noise.
-This led to the development of the MATLAB-based ariaDNE @shan2019ariadne, which aimed to provide a more reliable computation of DNE.
+DNE was originally proposed as a dental topographic metric and has shown considerable potential in terms of inferring dietary relationships [@winchester2014dental; @berthaume2016food; @lopez2018dental; @de2021widespread; @selig2021mammalian; @selig2024variation]. 
+More recently, it has been applied to other anatomical structures, aiding in the analysis of functional and evolutionary relationships, reconstructing evolutionary pathways, and identifying adaptive traits [@stamos2020ontogeny; @thomas2020physical; @chiaradia2023tissue; @clear2023baculum; @pamfilie2023quantifying; @assemat2023shape]. 
+The original DNE implementation [@winchester2014dental; @pampush2016introducing] is sensitive to variations in the discrete representation of continuous surfaces such as perturbations of mesh resolution, number of triangle faces, surface smoothing and noise.
+This led to the development of the MATLAB-based ariaDNE [@shan2019ariadne], which aimed to provide a more reliable computation of DNE.
 
 Sign-oriented DNE [@pampush2022sign], is a recent development that integrates the sign of local curvature to distinguish between concavity and convexity, adding an important layer of detail to the numerical descriptor. Its current implementation, like the original DNE, is sensitive to variations in the discrete representation of continuous shapes. Given the increasing diversity and widespread availability of 3D shape data, it is essential that implementations of the shape complexity metrics remain robust against small perturbations in the data representation.
 
@@ -102,7 +102,7 @@ Calculate DNE or signDNE for all files in a folder with a custom bandwidth:
 $ signDNE path/to/mesh/directory -b 0.1
 ```
 
-Full documentation is available at the [repository](https://github.com/frisbro303/signDNE_Python).
+Full documentation is available at the [`SignDNE` repository](https://github.com/frisbro303/signDNE_Python).
 
 # Acknowledgement
 DB is supported by NSF BCS 1552848 and NSF DBI 1759839. ID acknowledges the support of the Math+X grant 400837 from the Simons Foundation. 
