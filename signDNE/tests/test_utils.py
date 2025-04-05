@@ -6,6 +6,7 @@ from utils import close_holes
 from utils import triangulation_to_adjacency_matrix
 from utils import compute_face2vertex
 
+
 def test_close_holes():
     mesh = trimesh.load("signDNE/data/normal.ply")
     watertight_mesh = close_holes(mesh)
