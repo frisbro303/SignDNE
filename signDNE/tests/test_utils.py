@@ -26,5 +26,5 @@ def test_compute_face2vertex():
     mesh = trimesh.Trimesh(vertices, faces)
     expected = np.array([[1, 1, 1]])
     f2v = compute_face2vertex(mesh)
-    assert np.array_equal(f2v, expected) == True
+    assert np.array_equal(f2v.toarray(), expected) == True
 
