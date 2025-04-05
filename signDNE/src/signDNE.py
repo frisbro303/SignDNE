@@ -144,9 +144,9 @@ def aria_dne(
 
     face2vertex = compute_face2vertex(mesh)
 
-    unnormalized_vertex_area = compute_vertex_area(mesh, f2v)
+    unnormalized_vertex_area = compute_vertex_area(mesh, face2vertex)
     rescale(mesh)
-    vertex_area = compute_vertex_area(mesh, f2v)
+    vertex_area = compute_vertex_area(mesh, face2vertex)
 
     watertight_mesh = make_watertight(mesh)
 
