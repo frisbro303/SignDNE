@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests
       env:
-        PYTHONPATH: signDNE/src  # This ensures pytest knows where to find the `src` folder
+        PYTHONPATH: signDNE/src
       run: |
         pytest signDNE/tests --cov --cov-branch --cov-report=xml
         
