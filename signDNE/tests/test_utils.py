@@ -18,5 +18,5 @@ def test_triangulation_to_adjacency_matrix():
                     [1, 0, 2],
                     [1, 2, 0]])
     adj_mat = triangulation_to_adjacency_matrix(vertices, faces, len(vertices))
-    assert np.array_equal(adj_mat, expected_mat)
+    assert np.array_equal(adj_mat, expected_mat) == True
 
