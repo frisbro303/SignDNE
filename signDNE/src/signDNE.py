@@ -152,7 +152,7 @@ def aria_dne(
 
     vertex_normals = compute_vertex_normals(mesh)
 
-    num_points = np.shape(points)[0]
+    num_points = np.shape(mesh.vertices)[0]
     normals = np.zeros((num_points, 3))
     local_curvature = np.zeros(num_points)
 
