@@ -2,6 +2,7 @@
 # SignDNE
 ![PyPI](https://img.shields.io/pypi/v/signDNE)
 [![Test package](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml/badge.svg)](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml)
+
 A Python package calculating the shape complexity metric ariaDNE and its sign-oriented extension.
 
 ## Documentation
