@@ -1,5 +1,6 @@
-![Alt text](https://github.com/frisbro303/SignDNE/blob/43ff8aeeb91cf7bbd23d0f08f5aa8e1123ad189d/teeth-demo.png)
 # SignDNE
+![Alt text](https://github.com/frisbro303/SignDNE/blob/43ff8aeeb91cf7bbd23d0f08f5aa8e1123ad189d/teeth-demo.png)
+
 ![PyPI](https://img.shields.io/pypi/v/signDNE)
 [![Test package](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml/badge.svg)](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
