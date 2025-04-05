@@ -14,9 +14,10 @@ def test_close_holes():
 def test_triangulation_to_adjacency_matrix():
     vertices = np.array([[0, 1], [0, 2], [1, 1]])
     faces = np.array([[0, 1, 2]])
-    expected_mat = np.array([[0, 1, 1],
-                    [1, 0, 2],
-                    [1, 2, 0]])
+    expected_mat = np.array([
+                    [0, 1, 1],
+                    [1, 0, np.sqrt(2)],
+                    [1, np.sqrt(2), 0]])
     adj_mat = triangulation_to_adjacency_matrix(vertices, faces, len(vertices))
     assert np.array_equal(adj_mat, expected_mat) == True
 
