@@ -168,7 +168,7 @@ def aria_dne(
         p = np.tile(mesh.vertices[jj, :3], (num_neighbours, 1)) - mesh.vertices[neighbour, :3]
         weights = kernel[jj, neighbour]
 
-        cov_mat = build_covariance_matrix(p, w)
+        cov_mat = build_covariance_matrix(p, weights)
 
         # Compute eigenvalues and eigenvectors
         eigvals, eigvecs = np.linalg.eig(cov_mat)
