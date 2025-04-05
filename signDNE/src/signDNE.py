@@ -105,11 +105,13 @@ def determine_curvature_orientation(points, neighbour, weight, watertight_mesh):
     return sign
 
 
-def choose_arg_eig(v, jj, vertex_normals):
+def choose_arg_eig(normals, v, jj, vertex_normals):
     v_aug = np.hstack([v, -v])
     diff = v_aug - np.tile(vertex_normals[jj, :], (6, 1)).T
     q = np.sum(diff ** 2, axis=0)
     k = np.argmin(q)
+    normals[jj, :] = v_aug[:, chosen_eigvec]
+    chosen_eigvec %= 3
     return k
 
 
@@ -173,10 +175,8 @@ def aria_dne(
         # Compute eigenvalues and eigenvectors
         eigvals, eigvecs = np.linalg.eig(cov_mat)
 
-        chosen_eigvec = choose_arg_eig(eigvecs, jj, vertex_normals)
+        chosen_eigvec = choose_arg_eig(normals, eigvecs, jj, vertex_normals)
         # Update the vertex normal using chosen eigenvector
-        normals[jj, :] = v_aug[:, chosen_eigvec]
-        chosen_eigvec %= 3
 
         orientation_sign = determine_curvature_orientation(mesh.vertices, neighbour, weights, watertight_mesh)
 
