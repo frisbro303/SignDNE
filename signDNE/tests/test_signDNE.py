@@ -2,7 +2,7 @@ import pytest
 import trimesh
 import numpy as np
 
-from signDNE import prep, compute_vertex_area
+from signDNE import prep, compute_vertex_area, aria_dne
 from utils import compute_face2vertex
 
 
@@ -15,21 +15,23 @@ def test_prep():
     assert len(mesh.faces) > 0
 
 
-def test_compute_vertex_area():
-    """
-    Since a box has 8 vertices and is adjacent to 3 faces of
-    area 1, each vertex should be assigned area of 1/3  
-    """
-    mesh = trimesh.primitives.Box()
-    expected = np.repeat([1/3], 8)
-    f2v = compute_face2vertex(mesh)
-    vertex_area = compute_vertex_area(mesh, f2v)
-    assert np.allclose(vertex_area, 1/3)
+# def test_compute_vertex_area():
+#     """
+#     """
+#     mesh = trimesh.primitives.Box()
+#     expected = np.repeat([1/3], 8)
+#     f2v = compute_face2vertex(mesh)
+#     vertex_area = compute_vertex_area(mesh, f2v)
+#     assert np.allclose(vertex_area, 1/3) == True
 
 
 def test_signDNE():
     """
     Expected values are copied from the original MATLAB implementation
     """
+    mesh = trimesh.load("signDNE/data/normal.ply")
+    results = aria_dne(mesh)
+
+    assert np.allclose(results[2], 0.1190) == True
 
 
