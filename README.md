@@ -4,7 +4,7 @@
 [![Test package](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml/badge.svg)](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/frisbro303/SignDNE/graph/badge.svg?token=H5S4TW7139)](https://codecov.io/gh/frisbro303/SignDNE)
 
-A Python package calculating the shape complexity metric ariaDNE and its sign-oriented extension.
+A Python package for calculating the shape complexity metric ariaDNE and its sign-oriented extension.
 
 ## Documentation
 `SignDNE` can be used as a Python library and as a standalone command line interface.
