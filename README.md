@@ -1,5 +1,7 @@
 ![Alt text](https://github.com/frisbro303/SignDNE/blob/43ff8aeeb91cf7bbd23d0f08f5aa8e1123ad189d/teeth-demo.png)
 # SignDNE
+![PyPI](https://img.shields.io/pypi/v/signDNE)
+[![Test package](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml/badge.svg)](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml)
 A Python package calculating the shape complexity metric ariaDNE and its sign-oriented extension.
 
 ## Documentation
@@ -8,7 +10,6 @@ A Python package calculating the shape complexity metric ariaDNE and its sign-or
 Documentation for `SignDNE` is found in [docs.md](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md), which includes a section specifically for the [command line interface](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#command-line-interface).
 
 ## Installation
-![PyPI](https://img.shields.io/pypi/v/signDNE)
 
 The recommended installation method is to install the latest tagged release with `pip`:
 ```bash
