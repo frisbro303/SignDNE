@@ -1,4 +1,4 @@
-name: Draft PDF
+name: Compile paper
 on:
   push:
     paths:
