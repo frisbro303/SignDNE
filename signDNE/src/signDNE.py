@@ -173,7 +173,7 @@ def aria_dne(
         # Compute eigenvalues and eigenvectors
         eigvals, eigvecs = np.linalg.eig(cov_mat)
 
-        chosen_eigvec = choose_arg_eigvec(eigvecs, jj)
+        chosen_eigvec = choose_arg_eig(eigvecs, jj)
         # Update the vertex normal using chosen eigenvector
         normals[jj, :] = v_aug[:, chosen_eigvec]
         chosen_eigvec %= 3
