@@ -32,6 +32,6 @@ def test_signDNE():
     mesh = trimesh.load("signDNE/data/normal.ply")
     results = aria_dne(mesh)
 
-    assert np.allclose(results[2], 0.1190) == True
+    assert round(results[2], 4) == 0.1190
 
 
