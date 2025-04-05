@@ -1,5 +1,6 @@
 import pytest
 import trimesh
+import numpy as np
 
 from signDNE import prep, compute_vertex_area
 from utils import compute_face2vertex
