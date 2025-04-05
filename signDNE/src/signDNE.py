@@ -56,7 +56,7 @@ def compute_vertex_normals(mesh):
     return vertex_normals
 
 
-def get_dists(precomputed_dist, points, faces, num_points):
+def get_dists(precomputed_dist, points, faces, num_points, distance_type):
     if precomputed_dist is not None:
         if isinstance(precomputed_dist, np.ndarray) and precomputed_dist.shape == (num_points, num_points):
             d_dist = precomputed_dist
@@ -156,7 +156,7 @@ def aria_dne(
     normals = np.zeros((num_points, 3))
     local_curvature = np.zeros(num_points)
 
-    d_dist = get_dists(precomputed_dist, mesh.vertices, mesh.faces, num_points)
+    d_dist = get_dists(precomputed_dist, mesh.vertices, mesh.faces, num_points, distance_type)
     kernel = np.exp(-d_dist ** 2 / bandwidth ** 2)
 
     # Estimate curvature via PCA for each vertex in the mesh
