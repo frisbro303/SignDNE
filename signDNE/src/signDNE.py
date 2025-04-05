@@ -110,8 +110,8 @@ def choose_arg_eig(normals, v, jj, vertex_normals):
     diff = v_aug - np.tile(vertex_normals[jj, :], (6, 1)).T
     q = np.sum(diff ** 2, axis=0)
     k = np.argmin(q)
-    normals[jj, :] = v_aug[:, chosen_eigvec]
-    chosen_eigvec %= 3
+    normals[jj, :] = v_aug[:, k]
+    k %= 3
     return k
 
 
