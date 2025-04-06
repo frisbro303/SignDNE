@@ -4,7 +4,7 @@ import pandas as pd
 import trimesh
 from pathlib import Path
 import sys
-from src.signDNE import aria_dne
+from src.signDNE import signDNE
 
 
 def visualize_mesh(mesh, local_dne):
@@ -127,7 +127,7 @@ def main():
     meshes, file_names = zip(*load)
 
     values = [
-        aria_dne(
+        signDNE(
             mesh, bandwidth=args.bandwidth,
             cutoff=args.cutoff, distance_type=args.distance_type
         ) for mesh in meshes
