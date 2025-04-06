@@ -12,7 +12,7 @@ A Python package for calculating the shape complexity metric ariaDNE and its sig
 Documentation for `SignDNE` is found in [docs.md](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md), which includes a section specifically for the [command line interface](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#command-line-interface).
 
 ## Installation
-![PyPI](https://img.shields.io/pypi/v/signDNE)
+![PyPI - Version](https://img.shields.io/pypi/v/signDNE)
 
 The recommended installation method is to install the latest tagged release with `pip`:
 ```bash
