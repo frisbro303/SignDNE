@@ -2,7 +2,11 @@ import pytest
 import trimesh
 import numpy as np
 
-from signDNE import prep, compute_vertex_area, aria_dne
+from signDNE import prep
+from signDNE import compute_vertex_area
+from signDNE import aria_dne
+from signDNE import make_watertight
+
 from utils import compute_face2vertex
 
 
@@ -35,3 +39,19 @@ def test_signDNE():
     assert round(results[2], 4) == 0.1190
 
 
+def test_determine_curvature_orientation():
+    pass
+
+
+def test_centralize():
+    pass
+
+
+def test_make_watertight():
+    mesh = trimesh.load("signDNE/data/normal.ply")
+    watertight_mesh = close_holes(mesh)
+    assert watertight_mesh.is_watertight == True
+
+
+def test_rescale():
+    pass
