@@ -1,5 +1,5 @@
 # SignDNE
-SignDNE is a Python package designed for evolutionary biologists, providing an intuitive tool to robustly calculate the shape complexity metric ariaDNE and its sign-oriented extension.
+SignDNE is a Python package designed for evolutionary biologists, providing an intuitive tool to robustly calculate the shape complexity metric ariaDNE and its sign-oriented extension. SignDNE can be used as a [Python library](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#Using-SignDNE-as-a-Python-library and as a standalone [command line interface](https://github.com/frisbro303/signDNE_Python/blob/main/docs.md#command-line-interface).
 
 See the [arXiv preprint paper](https://arxiv.org/abs/2409.05549) for an exposition and discussion, of our novel robust algorithm for calculating the sign-oriented extension.
 
@@ -18,10 +18,31 @@ Alternatively, you can install the latest development version of `SignDNE` by ru
 pip install git+https://github.com/frisbro303/SignDNE
 ```
 
-## signDNE library
-In order to acess the ariaDNE function add `from signDNE import aria_dne` to your script.
+## Using `SignDNE` as a Python library
+To get started with using `SignDNE` as a library, simply import the `signDNE` function:
+```Python
+from signDNE import signDNE
+```
+Then you are ready to use the ariaDNE metric and its sign-oriented extension in your research. The function is documented below.
 
-The function will calculate local DNE, local curvature values, DNE, positiveDNE component, and negativeDNE component.
+
+The function takes the takes the following inputs:
+- Mesh in the format of the Trimesh library. If the mesh is not watertight, a watertight version of the mesh is generated on the fly to use for ray casting.
+- Optional bandwidth, for specifying local influence in DNE calculation. Default is set to be $0.08$.
+- Optional distance cutoff for the local neighborhoods used to calculate DNE. Default is $0$.
+- Optional desired distance metric, either Euclidean or Geodesic. Default is Euclidean.
+- Optional pre-computed distances. The format of which should be a symmetric $n times n$  matrix with pairwise distances, where $n$ is the number of points.
+
+With the following outputs:
+- *local_curvature*,  which is an ordered list of the signed local bending estimates for each vertex.
+- *local_dne*, which is local_curvature weighted by the vertex area. The vertex area is defined as the average area of the adjacent triangular faces.
+- *dne*, which is the original DNE value. This is also the sum of *local_dne*.
+- *positive_dne*, which is the positive component of DNE.
+- *negative_dne*, which is the negative component of DNE.
+- *surface_area*, which is the total surface area of the input mesh.
+- *positive_surface_area*, which is the surface area of the positive DNE regions.
+- *negative_surface_area*, which is the surface area of the negative DNE regions.
+
 
 The following preprocessing is automatically performed:
 - Closing of all holes if given mesh is non-watertight.
@@ -31,9 +52,8 @@ The following preprocessing is automatically performed:
 - remove infinite values from face and vertex data
 
 
-
 ## Command line interface
-Command line interface for the `ariaDNE` function.
+Command line interface for `SignDNE`.
 
 ### Usage
 ```
@@ -89,7 +109,6 @@ When the `-v` or `--visualize` flag is used with a single input file, the tool w
    ```
 
 
-
 ## Dependencies
 - scipy
 - trimesh
@@ -99,7 +118,3 @@ When the `-v` or `--visualize` flag is used with a single input file, the tool w
 - networkx
 - rtree
 - pyglet<2
-
-
-
-
