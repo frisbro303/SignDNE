@@ -100,7 +100,7 @@ def determine_curvature_orientation(points, neighbour, weight, watertight_mesh):
     neighbour_centroid = np.sum(points[neighbour, :] * weight.T[:, np.newaxis], axis=0) / np.sum(weight)
 
     # Determine if the centroid is inside or not to find the sign of curvature
-    inside = watertight_mesh.ray.contains_points([neighbour_centroid])
+    inside = watertight_mesh.ray.contains_points([neighbour_centroid])[0]
     sign = int(inside) * 2 - 1
     return sign
 

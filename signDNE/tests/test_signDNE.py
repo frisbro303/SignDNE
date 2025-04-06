@@ -35,7 +35,7 @@ def test_signDNE():
     """
     mesh_names = ["normal", "low", "high", "noise1", "noise2", "smooth"]
     expected_dnes = np.loadtxt("signDNE/tests/MATLAB_dnes.txt", delimiter = ",")
-    dnes = np.zeros(len(mesh))
+    dnes = np.zeros(len(mesh_names))
     for i in range(len(mesh_names)):
         mesh = trimesh.load(f"signDNE/data/{mesh_names[i]}.ply")
         dne = aria_dne(mesh)[2]
