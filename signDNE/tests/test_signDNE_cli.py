@@ -1,6 +1,7 @@
 import pytest
 import trimesh
 import filecmp
+import numpy as np
 from unittest.mock import patch
 
 
@@ -62,4 +63,4 @@ def test_main_logic(capsys):
     with patch("sys.argv", mock_args):
         main()
 
-    assert filecmp.cmp(expected_csv, result_csv, shallow=False)
+    assert filecmp.cmp(expected_csv, output_csv, shallow=False)
