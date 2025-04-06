@@ -56,7 +56,7 @@ Previous implementations of DNE and sign-oriented DNE have been written in R and
 # Package description and documentation
 The `signDNE` Python package combines the original `ariaDNE`, with the new sign-oriented extension. Users can use the package both as a standard Python library and as a standalone command-line interface (CLI). 
 
-The core functionality is encapsulated in the function `ariaDNE`. The function takes the following inputs:
+The core functionality is encapsulated in the function `signDNE`. The function takes the following inputs:
 
 - Mesh in the format of the Trimesh library. If the mesh is not watertight, a watertight version of the mesh is generated on the fly to use for ray casting.
   
