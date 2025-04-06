@@ -38,7 +38,7 @@ Biological shapes and anatomical structures are fundamental to the study of evol
 
 ![Visualization of local curvature field on various biological specimens identified by their [MorphoSource](https://www.morphosource.org) media identifiers. Positive curvature regions are shaded red, and negative curvature regions are shaded blue. \label{visualization-demo}](visualization-demo.png)
 
-`signDNE` is a new Python package for calculating DNE and sign-oriented DNE. The package faithfully reproduces the robust `ariaDNE` algorithm for calculating DNE, and includes a novel algorithm for robustly determining DNE signs. The implementation improves accessibility and usability by providing a visualization tool, aiding evolutionary biologists in their research, along with batch processing features. Figure \ref{visualization-demo} illustrates the visualization functionality of the local DNE field on various biological specimens.
+`SignDNE` is a new Python package for calculating DNE and sign-oriented DNE. The package faithfully reproduces the robust `ariaDNE` algorithm for calculating DNE, and includes a novel algorithm for robustly determining DNE signs. The implementation improves accessibility and usability by providing a visualization tool, aiding evolutionary biologists in their research, along with batch processing features. Figure \ref{visualization-demo} illustrates the visualization functionality of the local DNE field on various biological specimens.
 Alongside the new Python implementation, the original MATLAB implementation of `ariaDNE` has been updated to include the sign-oriented extension.
 
 # Statement of need
@@ -51,10 +51,10 @@ Sign-oriented DNE [@pampush2022sign], is a recent development that integrates th
 
 Previous implementations of DNE and sign-oriented DNE have been written in R and MATLAB. Given the proprietary nature of MATLAB, and the limited adoption of R (compared to Python), a Python implementation provides grounds for wider adoption in the biological community. 
 
-`signDNE` aims to fill this spot, by providing a Python implementation of the robust `ariaDNE` algorithm, faithfully reproducing the original MATLAB implementation, along with a novel robust algorithm for calculating DNE signs. Our new algorithm exhibits greater resilience to perturbations of mesh resolution, number of triangle faces, surface smoothing, and small noise during data processing. A detailed description of our algorithm, along with quantitative benchmarks demonstrating its improvement upon earlier methods, is found in preprint on arXiv [@hjerrild2024signdnepythonpackageariadne].
+`SignDNE` aims to fill this spot, by providing a Python implementation of the robust `ariaDNE` algorithm, faithfully reproducing the original MATLAB implementation, along with a novel robust algorithm for calculating DNE signs. Our new algorithm exhibits greater resilience to perturbations of mesh resolution, number of triangle faces, surface smoothing, and small noise during data processing. A detailed description of our algorithm, along with quantitative benchmarks demonstrating its improvement upon earlier methods, is found in preprint on arXiv [@hjerrild2024signdnepythonpackageariadne].
 
 # Package description and documentation
-The `signDNE` Python package combines the original `ariaDNE`, with the new sign-oriented extension. Users can use the package both as a standard Python library and as a standalone command-line interface (CLI). 
+The `SignDNE` Python package combines the original `ariaDNE`, with the new sign-oriented extension. Users can use the package both as a standard Python library and as a standalone command-line interface (CLI). 
 
 The core functionality is encapsulated in the function `signDNE`. The function takes the following inputs:
 
@@ -90,13 +90,13 @@ The CLI offers a convenient interface for directly processing files using this f
 
 Below are examples demonstrating basic CLI features.
 
-Calculating DNE or signDNE values for multiple files and save result as a file:
+Calculating DNE and `SignDNE` values for multiple files and save result as a file:
 
 ```bash
 $ signDNE path/to/mesh1.obj path/to/mesh2.ply -o DNEs.csv
 ```
 
-Calculate DNE or signDNE for all files in a folder with a custom bandwidth:
+Calculate DNE and `SignDNE` for all files in a folder with a custom bandwidth:
 
 ```bash
 $ signDNE path/to/mesh/directory -b 0.1
