@@ -3,7 +3,7 @@ import trimesh
 import numpy as np
 
 from signDNE import prep
-from signDNE import aria_dne
+from signDNE import signDNE
 from signDNE import make_watertight
 
 from utils import compute_face2vertex
@@ -28,7 +28,7 @@ def test_signDNE():
     dnes = np.zeros(len(mesh_names))
     for i in range(len(mesh_names)):
         mesh = trimesh.load(f"signDNE/data/{mesh_names[i]}.ply")
-        dne = aria_dne(mesh)[2]
+        dne = signDNE(mesh)[2]
         dnes[i] = dne
     
     assert np.allclose(expected_dnes, dnes)
