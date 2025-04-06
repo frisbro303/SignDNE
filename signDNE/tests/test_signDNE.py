@@ -31,12 +31,18 @@ def test_prep():
 
 def test_signDNE():
     """
-    Expected values are copied from the original MATLAB implementation
+    Tests against DNE values computed with the original MATLAB implementation 
     """
-    mesh = trimesh.load("signDNE/data/normal.ply")
-    results = aria_dne(mesh)
+    mesh_names = ["normal", "low", "high", "noise1", "noise2", "smooth"]
+    expected_dnes = np.loadtxt("signDNE/tests/MATLAB_dnes.txt", delimiter = ",")
+    dnes = np.zeros(len(mesh))
+    for i in range(len(mesh_names)):
+        mesh = trimesh.load(f"signDNE/data/{mesh_names[i]}.ply")
+        dne = aria_dne(mesh)[2]
+        dnes[i] = dne
+        
 
-    assert round(results[2], 4) == 0.1190
+    assert np.allclose(expected_dnes, dnes)
 
 
 def test_determine_curvature_orientation():
@@ -49,7 +55,7 @@ def test_centralize():
 
 def test_make_watertight():
     mesh = trimesh.load("signDNE/data/normal.ply")
-    watertight_mesh = close_holes(mesh)
+    watertight_mesh = make_watertight(mesh)
     assert watertight_mesh.is_watertight == True
 
 

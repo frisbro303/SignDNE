@@ -1,5 +1,8 @@
 import pytest
+import trimesh
+import filecmp
 from unittest.mock import patch
+
 
 from _signDNE_cli import parse_arguments
 from _signDNE_cli import visualize_mesh
@@ -51,16 +54,12 @@ def test_safe_load_failure():
     assert result is None
 
 
-
-# @patch("src.your_module.aria_dne")
-# @patch("src.your_module.safe_load")
-# @patch("src.your_module.get_file_names")
-# @patch("src.your_module.output_results")
 def test_main_logic(capsys):
-    mock_args = ["prog", "signDNE/data/normal.ply"]
+    mock_args = ["prog", "signDNE/data/normal.ply", "-o", "normal_output.csv"]
+    expected_csv = "signDNE/tests/expected_normal_output.csv"
+    output_csv = "signDNE/tests/normal_output.csv"
 
     with patch("sys.argv", mock_args):
         main()
-        captured = capsys.readouterr()
-        
-        assert captured == True
+
+    assert filecmp.cmp(expected_csv, result_csv, shallow=False)
