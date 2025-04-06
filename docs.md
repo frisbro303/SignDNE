@@ -23,7 +23,7 @@ To get started with using `SignDNE` as a library, simply import the `signDNE` fu
 ```Python
 from signDNE import signDNE
 ```
-You are now ready to use the ariaDNE metric and its sign-oriented extension as library in your research. The function is documented below.
+You are now ready to use the ariaDNE metric and its sign-oriented extension as library in your research using the function `signDNE`. The function is documented below.
 
 
 The function takes the takes the following inputs:
