@@ -56,7 +56,7 @@ def test_safe_load_failure():
 
 
 def test_main_logic(capsys):
-    mock_args = ["prog", "signDNE/data/normal.ply", "-o", "normal_output.csv"]
+    mock_args = ["prog", "signDNE/data/normal.ply", "-o", "signDNE/tests/normal_output.csv"]
     expected_csv = "signDNE/tests/expected_normal_output.csv"
     output_csv = "signDNE/tests/normal_output.csv"
 
