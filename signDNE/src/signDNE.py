@@ -115,7 +115,7 @@ def choose_arg_eig(normals, v, jj, vertex_normals):
     return k
 
 
-def aria_dne(
+def signDNE(
     mesh, bandwidth=0.08, cutoff=0, distance_type='Euclidean',
     precomputed_dist=None):
     """
