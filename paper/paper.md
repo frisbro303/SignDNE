@@ -105,6 +105,6 @@ $ signDNE path/to/mesh/directory -b 0.1
 Full documentation is available at the [`SignDNE` repository](https://github.com/frisbro303/signDNE_Python).
 
 # Acknowledgement
-DB is supported by NSF BCS 1552848 and NSF DBI 1759839. ID acknowledges the support of the Math+X grant 400837 from the Simons Foundation. 
+Doug M. Boyer is supported by NSF BCS 1552848 and NSF DBI 1759839. Ingrid Daubechies acknowledges the support of the Math+X grant 400837 from the Simons Foundation.
 
 # References
