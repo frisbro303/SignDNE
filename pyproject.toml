@@ -19,7 +19,7 @@ license = "GPL-3.0-or-later"
 dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'rtree', 'pyglet<2']
 
 [tool.setuptools]
-package-dir = {"" = "SignDNE/src"}
+package-dir = {"" = "signDNE/src"}
 
 [tool.setuptools.packages.find]
 where = ["signDNE/src"]
