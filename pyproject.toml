@@ -28,4 +28,4 @@ where = ["SignDNE/src"]
 Homepage = "https://github.com/frisbro303/SignDNE"
 
 [project.scripts]
-signDNE = "src._signDNE_cli:main"
+signDNE = "signDNE._signDNE_cli:main"
