@@ -6,7 +6,7 @@ from signDNE import prep
 from signDNE import signDNE
 from signDNE import make_watertight
 
-from utils import compute_face2vertex
+from signDNE.utils import compute_face2vertex
 
 
 def test_prep():
