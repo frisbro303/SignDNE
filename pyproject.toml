@@ -22,7 +22,7 @@ dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'r
 package-dir = {"" = "SignDNE/src"}
 
 [tool.setuptools.packages.find]
-where = ["signDNE"]
+where = ["SignDNE/src"]
 
 [project.urls]
 Homepage = "https://github.com/frisbro303/SignDNE"
