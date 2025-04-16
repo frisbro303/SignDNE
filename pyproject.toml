@@ -23,7 +23,6 @@ package-dir = {"" = "signDNE/src"}
 
 [tool.setuptools.packages.find]
 where = ["signDNE/src"]
-include = ["*"]
 
 [project.urls]
 Homepage = "https://github.com/frisbro303/SignDNE"
