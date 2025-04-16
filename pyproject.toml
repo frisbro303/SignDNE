@@ -25,7 +25,7 @@ package-dir = {"" = "signDNE"}
 where = ["signDNE"]
 
 [project.urls]
-Homepage = "https://github.com/frisbro303/signDNE_Python"
+Homepage = "https://github.com/frisbro303/SignDNE"
 
 [project.scripts]
 signDNE = "src._signDNE_cli:main"
