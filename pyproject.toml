@@ -21,11 +21,14 @@ dependencies = ['scipy', 'trimesh', 'numpy', 'pyvista', 'pandas', 'networkx', 'r
 [project.urls]
 Homepage = "https://github.com/frisbro303/SignDNE"
 
+
 [tool.setuptools]
-package-dir = {"" = "signDNE/src"}  # Points to signDNE/src from root
+package-dir = {"" = "signDNE/src"}
 
 [tool.setuptools.packages.find]
-where = ["signDNE/src"]  # Looks for packages in signDNE/src
+where = ["signDNE/src"]
+include = ["signDNE"]
+namespaces = false
 
 [project.scripts]
-signDNE = "signDNE._signDNE_cli:main"  # Assumes _signDNE_cli.py is in signDNE package
+signDNE = "signDNE._signDNE_cli:main"
