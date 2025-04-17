@@ -2,9 +2,9 @@ import pytest
 import trimesh
 import numpy as np
 
-from ..utils import close_holes
-from ..utils import triangulation_to_adjacency_matrix
-from ..utils import compute_face2vertex
+from utils import close_holes
+from utils import triangulation_to_adjacency_matrix
+from utils import compute_face2vertex
 
 
 def test_close_holes():
