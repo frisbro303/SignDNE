@@ -2,7 +2,7 @@ from scipy.spatial.distance import pdist, squareform
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import dijkstra
 import numpy as np
-from utils import compute_face2vertex, triangulation_to_adjacency_matrix, close_holes
+from signDNE.utils import compute_face2vertex, triangulation_to_adjacency_matrix, close_holes
 import trimesh
 
 
