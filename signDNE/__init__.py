@@ -1,1 +1,1 @@
-from .signDNE import *
+from .signDNE import signDNE
