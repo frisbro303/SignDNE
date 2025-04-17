@@ -2,11 +2,11 @@ import pytest
 import trimesh
 import numpy as np
 
-from utils import compute_face2vertex
+from ..utils import compute_face2vertex
 
-from signDNE import prep
-from signDNE import signDNE
-from signDNE import make_watertight
+from ..signDNE import prep
+from ..signDNE import signDNE
+from ..signDNE import make_watertight
 
 
 def test_prep():
