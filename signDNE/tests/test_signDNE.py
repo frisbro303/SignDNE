@@ -4,9 +4,9 @@ import numpy as np
 
 from signDNE.utils import compute_face2vertex
 
-from signDNE import prep
-from signDNE import signDNE
-from signDNE import make_watertight
+from signDNE.signDNE import prep
+from signDNE.signDNE import signDNE
+from signDNE.signDNE import make_watertight
 
 
 def test_prep():
