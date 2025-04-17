@@ -5,11 +5,11 @@ import numpy as np
 from unittest.mock import patch
 
 
-from ._signDNE_cli import parse_arguments
-from ._signDNE_cli import visualize_mesh
-from ._signDNE_cli import safe_load
-from ._signDNE_cli import get_file_names
-from ._signDNE_cli import main
+from signDNE._signDNE_cli import parse_arguments
+from signDNE._signDNE_cli import visualize_mesh
+from signDNE._signDNE_cli import safe_load
+from signDNE._signDNE_cli import get_file_names
+from signDNE._signDNE_cli import main
 
 
 def test_get_file_names(tmp_path):
