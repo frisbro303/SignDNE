@@ -2,7 +2,7 @@ import pytest
 import trimesh
 import numpy as np
 
-from signDNE.utils import compute_face2vertex
+from utils import compute_face2vertex
 
 from signDNE import prep
 from signDNE import signDNE
