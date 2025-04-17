@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests
       env:
-        PYTHONPATH: signDNE/src
+        PYTHONPATH: signDNE
       run: |
         pytest signDNE/tests --cov --cov-branch --cov-report=xml
         
