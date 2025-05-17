@@ -1,7 +1,6 @@
 ![Alt text](https://github.com/frisbro303/SignDNE/blob/43ff8aeeb91cf7bbd23d0f08f5aa8e1123ad189d/teeth-demo.png)
 
 # SignDNE
-[![status](https://joss.theoj.org/papers/4ba05813906567a180128cc98bb217a8/status.svg)](https://joss.theoj.org/papers/4ba05813906567a180128cc98bb217a8)
 [![Test package](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml/badge.svg)](https://github.com/frisbro303/SignDNE/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/frisbro303/SignDNE/graph/badge.svg?token=H5S4TW7139)](https://codecov.io/gh/frisbro303/SignDNE)
 
